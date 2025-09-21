@@ -20,7 +20,7 @@ body{
 }
 body::before{
   content:"";position:fixed;inset:0;z-index:-1;
-  background:linear-gradient(180deg,#3c9eb9 0%,#0b0f14 100%);
+  background:linear-gradient(180deg,#0b5aa0 0%,#ffffff 120%);
   pointer-events:none;transform:translateZ(0)
 }
 
@@ -30,7 +30,7 @@ body::before{
 
 header.hero{
   position:relative;padding-block:var(--s-7) clamp(20px,5vh,var(--s-6));padding-inline:var(--s-4);
-  border-block-end:1px solid var(--border);
+  border-block-end:1px solid  rgba(154,231,255,.18) !important;
   background:
     linear-gradient(180deg,rgba(12,17,23,0) 0%,rgba(12,17,23,.6) 60%,rgba(12,17,23,0) 100%),
     url("img/background.png") center/cover no-repeat
@@ -54,11 +54,12 @@ header.hero{
   padding-block:var(--s-6) clamp(8px,2.5vh,var(--s-3));padding-inline:var(--s-4);
   display:flex;align-items:stretch;gap:var(--s-4);overflow-x:auto;overflow-y:hidden;
   scroll-snap-type:x mandatory;scroll-behavior:smooth;scroll-padding-inline:var(--s-4);
+  scrollbar-width:thin; scrollbar-color:rgba(14,79,140,.45) transparent;
   -webkit-overflow-scrolling:touch
 }
 .timeline::-webkit-scrollbar{block-size:8px}
 .timeline::-webkit-scrollbar-track{background:transparent}
-.timeline::-webkit-scrollbar-thumb{background:rgba(5,58,58,.372);border-radius:999px}
+.timeline::-webkit-scrollbar-thumb{ background:rgba(14,79,140,.45) !important;border-radius:999px}
 .timeline::after{
   content:"";display:block;block-size:1px;margin-block:clamp(16px,3vh,var(--s-5)) clamp(6px,1.8vh,var(--s-3));
   background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.18) 25%,rgba(255,255,255,.28) 50%,rgba(255,255,255,.18) 75%,transparent 100%);
@@ -100,15 +101,21 @@ header.hero{
 /* ===== Initiatives (cards, accordion, carousel) ===== */
 #initiatives{background:var(--surface-2)}
 #initiatives .container{max-inline-size:var(--max-w)}
-#initiatives .card{border:0;border-radius:var(--radius-lg);box-shadow:var(--shadow);
-  background:linear-gradient(180deg,rgba(28,40,56,.85),rgba(24,34,49,.95))}
+#initiatives .card{
+  border:0;
+  border-radius:var(--radius-lg);
+  box-shadow:var(--shadow);
+  background:linear-gradient(180deg,rgba(28,40,56,.85),rgba(24,34,49,.95));
+  padding: 16px;
+ }
 #initiatives .card-title{color:#f2f8ff}
 #initiatives .card-text{color:var(--text)}
 #initiatives .col .btn{align-self:start}
 
 .btn{border-radius:var(--radius-sm)}
-.btn-primary{background:var(--brand);border-color:var(--brand);color:#05141f}
-.btn-primary:hover,.btn.btn-primary:focus{filter:brightness(1.08)}
+.btn-primary{ background:#00a3e0 !important; border-color:#00a3e0 !important; color:#05141f !important; }
+.btn-primary:hover,.btn.btn-primary:focus{ filter:brightness(1.06) !important; }
+
 .btn:focus-visible{outline:3px solid #9ae7ff;outline-offset:2px}
 
 .accordion-button{background:#152033;color:#eaf2fb}
@@ -124,7 +131,8 @@ header.hero{
 .carousel-control-prev:hover,.carousel-control-next:hover{opacity:1}
 
 
-.subscription{background:linear-gradient(180deg,rgba(24,34,49,1),rgba(24,34,49,.9));padding-block:var(--s-6);padding-inline:var(--s-4)}
+.subscription{background:linear-gradient(180deg,rgba(24,34,49,.98), rgba(24,34,49,.90)) !important;
+  padding-block:var(--s-6);padding-inline:var(--s-4)}
 .subscription .container{max-inline-size:var(--max-w)}
 .subscription h2{color:#f2f8ff;margin-block-end:var(--s-3)}
 .form-wrap{
@@ -150,6 +158,11 @@ footer a{color:#9ae7ff;text-decoration:underline}
   color:var(--text);border-radius:var(--radius-lg);border:1px solid var(--border)
 }
 
+.hero_title,
+.hero_subtitle { text-align: center; text-wrap: balance; }
+.hero_title::after { inline-size: 100%; }
+.hero_title { max-inline-size: 22ch; margin-inline: auto; }
+header.hero { overflow: hidden; }
 /* ===== RTL support ===== */
 :dir(rtl) .timeline{direction:rtl;scroll-padding-inline:var(--s-4)}
 :dir(rtl) header.hero,:dir(rtl) #initiatives,:dir(rtl) .subscription,:dir(rtl) footer{direction:rtl}
@@ -186,3 +199,4 @@ footer a{color:#9ae7ff;text-decoration:underline}
 :dir(rtl) .carousel-item-end { transform: translateX(-100%) !important; }
 :dir(rtl) .active.carousel-item-end { transform: translateX(0) !important; }
 :dir(rtl) .accordion-button::after{ margin-inline-start:0; margin-inline-end:.5rem }
+
